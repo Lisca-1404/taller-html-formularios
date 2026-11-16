@@ -16,9 +16,12 @@ Además de los 12 ejemplos del anexo, el proyecto incluye un caso real que los u
 
 En un sitio con servidor, el formulario enviaría los datos con `method="post"`.
 
+Todas las páginas tienen un **menú lateral retráctil** (`js/menu.js`): se abre y se cierra con el botón de arriba a la izquierda o con la tecla Escape, recuerda cómo lo dejaste en el computador y en el celular aparece cerrado.
+
 ## Estructura
 
 - `registro.html` y `resultado.html`: el proyecto de registro.
+- `js/menu.js`: menú lateral retráctil.
 - `index.html`: lista enlazada de los 12 ejemplos.
 - `ejemplos/`: un archivo HTML por cada código del anexo y `estilos.css`.
 - `img/send.svg`: icono usado en el ejemplo 7.
