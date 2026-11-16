@@ -1,0 +1,75 @@
+/* Diseño moderno para visualizar los ejemplos del taller.
+   Solo cambia la apariencia: el código HTML de cada ejemplo es el del anexo. */
+:root {
+  --azul: #0b3185;
+  --azul-claro: #3b6ef5;
+  --amarillo: #ffc600;
+  --texto: #1b2333;
+  --suave: #5b6578;
+  --borde: #d6dcea;
+  --error: #d93025;
+  --radio: 12px;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--texto); line-height: 1.5;
+  background: linear-gradient(135deg, #eef3ff 0%, #f9fbff 55%, #fff8e1 100%);
+}
+main {
+  max-width: 640px; margin: 32px auto; padding: 28px 32px 32px;
+  background: #fff; border: 1px solid var(--borde); border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(11, 49, 133, .10);
+}
+.volver { display: inline-block; margin-bottom: 8px; font-size: 13px; color: var(--azul-claro); text-decoration: none; }
+.volver:hover { text-decoration: underline; }
+h1 {
+  margin: 0 0 20px; font-size: 20px; color: var(--azul); letter-spacing: -.01em;
+  padding-bottom: 12px; border-bottom: 3px solid transparent;
+  border-image: linear-gradient(90deg, var(--azul), var(--amarillo)) 1;
+}
+p { margin: 0 0 14px; }
+input, select, textarea, button { font: inherit; color: inherit; }
+input[type=text], input[type=number], input[type=password], input[type=date], textarea, select {
+  padding: 9px 12px; background: #fbfcff; border: 1px solid var(--borde); border-radius: 10px;
+  transition: border-color .15s, box-shadow .15s;
+}
+input::placeholder { color: #98a2b8; }
+input:focus, select:focus, textarea:focus {
+  outline: none; border-color: var(--azul-claro); box-shadow: 0 0 0 4px rgba(59, 110, 245, .18);
+}
+input[type=radio], input[type=checkbox] { accent-color: var(--azul); width: 16px; height: 16px; vertical-align: middle; margin-left: 6px; }
+input[type=submit], button {
+  display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+  padding: 10px 20px; border: 0; border-radius: 999px; font-weight: 600;
+  color: #fff; background: linear-gradient(135deg, var(--azul), var(--azul-claro));
+  box-shadow: 0 4px 12px rgba(11, 49, 133, .25); transition: transform .12s, box-shadow .12s;
+}
+input[type=submit]:hover, button:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(11, 49, 133, .32); }
+input[type=reset] {
+  cursor: pointer; padding: 10px 20px; border-radius: 999px; font-weight: 600;
+  color: var(--azul); background: #fff; border: 1px solid var(--borde);
+}
+input[type=reset]:hover { background: #f1f5ff; }
+/* Resalta los campos que no cumplen la validación (required, minlength) */
+input:invalid { border-color: var(--error); box-shadow: 0 0 0 3px rgba(217, 48, 37, .16); }
+input[type=radio]:invalid { outline: 2px solid var(--error); outline-offset: 2px; box-shadow: none; }
+textarea { resize: vertical; }
+
+/* Página de inicio */
+.hero { max-width: 880px; margin: 40px auto 24px; padding: 0 20px; }
+.hero .etiqueta { display: inline-block; padding: 4px 12px; border-radius: 999px; background: var(--amarillo); color: var(--azul); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+.hero h1 { margin: 14px 0 8px; font-size: 34px; border: 0; border-image: none; padding: 0; }
+.hero p { color: var(--suave); max-width: 560px; }
+.rejilla { max-width: 880px; margin: 0 auto 48px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+.tarjeta {
+  display: flex; flex-direction: column; gap: 6px; padding: 18px; text-decoration: none; color: inherit;
+  background: #fff; border: 1px solid var(--borde); border-radius: 16px; transition: transform .15s, box-shadow .15s, border-color .15s;
+}
+.tarjeta:hover { transform: translateY(-3px); border-color: var(--azul-claro); box-shadow: 0 10px 24px rgba(11, 49, 133, .14); }
+.tarjeta .num { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 10px; background: var(--azul); color: #fff; font-weight: 700; }
+.tarjeta strong { color: var(--azul); }
+.tarjeta span.desc { font-size: 13px; color: var(--suave); }
+@media (max-width: 560px) { main { margin: 12px; padding: 20px; } }
+input[type=radio]:focus { box-shadow: none; }
