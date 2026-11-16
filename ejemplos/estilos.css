@@ -73,3 +73,28 @@ textarea { resize: vertical; }
 .tarjeta span.desc { font-size: 13px; color: var(--suave); }
 @media (max-width: 560px) { main { margin: 12px; padding: 20px; } }
 input[type=radio]:focus { box-shadow: none; }
+
+/* ===== Proyecto: registro de estudiantes ===== */
+main.ancho { max-width: 760px; }
+.intro { color: var(--suave); margin: -6px 0 22px; }
+.fila { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+.formulario label { display: block; margin-bottom: 16px; font-size: 14px; font-weight: 600; }
+.formulario label input:not([type=radio]), .formulario label select, .formulario label textarea {
+  display: block; width: 100%; margin-top: 6px; font-weight: 400; font-size: 15px;
+}
+.formulario fieldset { margin: 0 0 16px; padding: 10px 14px 12px; border: 1px solid var(--borde); border-radius: 12px; }
+.formulario legend { padding: 0 6px; font-size: 14px; font-weight: 600; }
+.formulario label.opcion { display: inline-block; margin: 0 18px 0 0; font-weight: 400; }
+.formulario label.opcion input { margin: 0 6px 0 0; }
+.ayuda { display: block; margin-top: 4px; font-size: 12px; font-weight: 400; color: var(--suave); }
+.acciones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.acciones img { width: 20px; height: 20px; }
+.resumen { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 10px 20px; }
+.resumen dt { font-weight: 600; color: var(--azul); }
+.resumen dd { margin: 0; word-break: break-word; }
+.exito { display: inline-block; margin-bottom: 14px; padding: 4px 12px; border-radius: 999px; background: #e3f6e8; color: #1e7a3c; font-size: 13px; font-weight: 700; }
+.tarjeta.destacada { max-width: 880px; margin: 0 auto 28px; padding: 22px; background: linear-gradient(135deg, var(--azul), var(--azul-claro)); border: 0; color: #fff; }
+.tarjeta.destacada strong, .tarjeta.destacada .desc { color: #fff; }
+.tarjeta.destacada .num { background: var(--amarillo); color: var(--azul); }
+.titulo-seccion { max-width: 880px; margin: 8px auto 12px; padding: 0 20px; font-size: 15px; color: var(--suave); text-transform: uppercase; letter-spacing: .06em; }
+@media (max-width: 560px) { .fila { grid-template-columns: 1fr; } .resumen { grid-template-columns: 1fr; gap: 2px; } .resumen dd { margin-bottom: 10px; } }

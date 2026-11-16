@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resultado del registro</title>
+<link rel="stylesheet" href="ejemplos/estilos.css">
+</head>
+<body>
+<main class="ancho">
+  <a class="volver" href="registro.html">&larr; Volver al formulario</a>
+  <h1>Resultado del registro</h1>
+  <div id="contenido"></div>
+</main>
+<script>
+/* Lee los datos que el formulario envió por la URL (method="get") y los muestra.
+   Se usa textContent para que nada de lo escrito se interprete como HTML. */
+(function () {
+  var consulta = location.search || location.hash.replace(/^#/, '?');
+  var datos = new URLSearchParams(consulta);
+  var cont = document.getElementById('contenido');
+  if (!datos.has('usuario')) {
+    var p = document.createElement('p');
+    p.textContent = 'Todavía no has enviado el formulario. ';
+    var a = document.createElement('a');
+    a.href = 'registro.html'; a.textContent = 'Ir al registro';
+    p.appendChild(a); cont.appendChild(p); return;
+  }
+  var ok = document.createElement('span');
+  ok.className = 'exito'; ok.textContent = 'Registro recibido'; cont.appendChild(ok);
+  var fecha = datos.get('nacimiento');
+  if (fecha) {
+    var f = new Date(fecha + 'T00:00:00');
+    if (!isNaN(f)) fecha = f.toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+  var filas = [
+    ['Nombre', datos.get('nombre')],
+    ['Apellidos', datos.get('apellidos')],
+    ['Usuario', datos.get('usuario')],
+    ['Contraseña', '•'.repeat(parseInt(datos.get('pw_len'), 10) || 0)],
+    ['Edad', datos.get('edad')],
+    ['Fecha de nacimiento', fecha],
+    ['Sexo', datos.get('hm')],
+    ['Programa', datos.get('programa')],
+    ['Comentarios', datos.get('comentarios') || '(sin comentarios)']
+  ];
+  var dl = document.createElement('dl'); dl.className = 'resumen';
+  filas.forEach(function (par) {
+    var dt = document.createElement('dt'); dt.textContent = par[0];
+    var dd = document.createElement('dd'); dd.textContent = par[1] || '';
+    dl.appendChild(dt); dl.appendChild(dd);
+  });
+  cont.appendChild(dl);
+})();
+</script>
+</body>
+</html>

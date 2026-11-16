@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registro de estudiantes</title>
+<link rel="stylesheet" href="ejemplos/estilos.css">
+</head>
+<body>
+<main class="ancho">
+  <a class="volver" href="index.html">&larr; Volver al índice</a>
+  <h1>Registro de estudiantes</h1>
+  <p class="intro">Completa tus datos. Los campos con validación te avisarán si falta algo o si no cumplen el formato.</p>
+
+  <form class="formulario" action="resultado.html" method="get">
+    <div class="fila">
+      <label>Nombre
+        <input type="text" name="nombre" size="30" placeholder="Escribe tu nombre" required>
+      </label>
+      <label>Apellidos
+        <input type="text" name="apellidos" size="40" placeholder="Escribe tus dos apellidos" required>
+      </label>
+    </div>
+
+    <div class="fila">
+      <label>Usuario
+        <input type="text" name="usuario" minlength="4" maxlength="12" placeholder="De 4 a 12 caracteres" required>
+      </label>
+      <label>Contraseña
+        <input type="password" name="password" minlength="6" placeholder="Mínimo 6 caracteres" required>
+      </label>
+    </div>
+
+    <div class="fila">
+      <label>Edad
+        <input type="number" name="edad" min="14" max="99" placeholder="Ej.: 25" required>
+      </label>
+      <label>Fecha de nacimiento
+        <input type="date" name="nacimiento" required>
+      </label>
+    </div>
+
+    <fieldset>
+      <legend>Sexo</legend>
+      <label class="opcion"><input type="radio" name="hm" value="Hombre" required> Hombre</label>
+      <label class="opcion"><input type="radio" name="hm" value="Mujer" required> Mujer</label>
+    </fieldset>
+
+    <label>Programa académico
+      <select name="programa">
+        <option value="Administración de Empresas">Administración de Empresas</option>
+        <option value="Contaduría Pública">Contaduría Pública</option>
+        <option value="Ingeniería de Software" selected>Ingeniería de Software</option>
+      </select>
+    </label>
+
+    <label>Comentarios
+      <textarea name="comentarios" rows="4" cols="40" placeholder="Cuéntanos algo más (opcional)"></textarea>
+    </label>
+
+    <div class="acciones">
+      <button type="submit">
+        <img src="img/send.svg" alt="" width="20" height="20">
+        Registrarme
+      </button>
+      <input type="reset" value="Borrar">
+    </div>
+  </form>
+</main>
+<script>
+/* La contraseña no debe viajar en la URL (method="get" la dejaría en el historial).
+   Antes de enviar, se manda solo su longitud y se desactiva el campo para que no se incluya.
+   En un sitio real los datos irían con method="post" a un servidor. */
+(function () {
+  var f = document.querySelector('form');
+  var pw = f.elements.password;
+  f.addEventListener('submit', function () {
+    var h = document.createElement('input');
+    h.type = 'hidden'; h.name = 'pw_len'; h.value = pw.value.length;
+    f.appendChild(h);
+    pw.disabled = true;
+  });
+  window.addEventListener('pageshow', function () {
+    pw.disabled = false;
+    var h = f.elements.pw_len; if (h) h.remove();
+  });
+})();
+</script>
+</body>
+</html>
