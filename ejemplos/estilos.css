@@ -98,3 +98,9 @@ main.ancho { max-width: 760px; }
 .tarjeta.destacada .num { background: var(--amarillo); color: var(--azul); }
 .titulo-seccion { max-width: 880px; margin: 8px auto 12px; padding: 0 20px; font-size: 15px; color: var(--suave); text-transform: uppercase; letter-spacing: .06em; }
 @media (max-width: 560px) { .fila { grid-template-columns: 1fr; } .resumen { grid-template-columns: 1fr; gap: 2px; } .resumen dd { margin-bottom: 10px; } }
+
+/* En el formulario real, el error se muestra solo después de que el usuario interactúa con el campo */
+.formulario input:invalid { border-color: var(--borde); box-shadow: none; }
+.formulario input[type=radio]:invalid { outline: none; }
+.formulario input:user-invalid { border-color: var(--error); box-shadow: 0 0 0 3px rgba(217, 48, 37, .16); }
+.formulario input[type=radio]:user-invalid { outline: 2px solid var(--error); outline-offset: 2px; box-shadow: none; }
