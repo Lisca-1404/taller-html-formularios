@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formulario enviado</title>
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<main>
+<a class="volver" href="../index.html">&larr; Volver al índice</a>
+<h1>Formulario enviado correctamente</h1>
+<p>Estos son los datos que recibió la página:</p>
+<ul id="datos"></ul>
+<p><a href="javascript:history.back()">&larr; Volver al formulario</a></p>
+</main>
+<script>
+(function () {
+  var lista = document.getElementById('datos');
+  var params = new URLSearchParams(location.search);
+  var hay = false;
+  params.forEach(function (valor, nombre) {
+    hay = true;
+    var li = document.createElement('li');
+    // Las contraseñas no se muestran en pantalla
+    var mostrar = /pass|contrase/i.test(nombre) ? '*'.repeat(valor.length) : valor;
+    li.textContent = nombre + ': ' + mostrar;
+    lista.appendChild(li);
+  });
+  if (!hay) {
+    var li = document.createElement('li');
+    li.textContent = '(el formulario se envió sin campos con nombre)';
+    lista.appendChild(li);
+  }
+})();
+</script>
+<script src="../js/menu.js"></script>
+</body>
+</html>
